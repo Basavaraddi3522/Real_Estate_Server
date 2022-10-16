@@ -4,7 +4,9 @@ const bodyParser = require("body-parser");
 const signup = require('./routes/signup');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
-const auth = require('./routes/auth'); 
+const auth = require('./routes/auth');
+const assetRoute = require('./routes/asset');
+ 
 const cors = require("cors");
 const realEstateRoute = require('./routes/api_List');
 
@@ -19,6 +21,7 @@ app.use(cors());
 app.use('/signup', signup)
 app.use('/login',login)
 app.use('/logout',logout)
+app.use('/asset', assetRoute);
 app.use('/auth',auth)
 app.use('/property_List', realEstateRoute);
 

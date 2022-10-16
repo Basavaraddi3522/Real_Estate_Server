@@ -13,6 +13,12 @@ const cors = require("cors");
 dotenv.config();
 const port = process.env.PORT||8080;
 
+// database connection
+mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true,useUnifiedTopology:true },function(err){
+    if(err) console.log(err);
+    console.log("database is connected");
+});
+
 // app use
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,14 +32,6 @@ app.use('/logout',logout)
 app.use('/auth',auth)
 app.use('/property_List', realEstateRoute);
 app.use('/asset', assetRoute);
-
-
-// database connection
-mongoose.connect(process.env.DATABASE_URL,{ useNewUrlParser: true,useUnifiedTopology:true },function(err){
-    if(err) console.log(err);
-    console.log("database is connected");
-});
-
 
 //basic testing api temporarily
 app.get('/',(req,res)=>{

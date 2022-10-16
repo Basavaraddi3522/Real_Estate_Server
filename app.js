@@ -6,6 +6,7 @@ const login = require('./routes/login');
 const logout = require('./routes/logout');
 const auth = require('./routes/auth'); 
 const cors = require("cors");
+const realEstateRoute = require('./routes/api_List');
 
 
 // app use
@@ -19,6 +20,7 @@ app.use('/signup', signup)
 app.use('/login',login)
 app.use('/logout',logout)
 app.use('/auth',auth)
+app.use('/property_List', realEstateRoute);
 
 
 //basic testing api temporarily
